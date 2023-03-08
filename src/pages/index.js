@@ -104,20 +104,31 @@ const IndexPage = () => {
     setGeneratedPassword(password);
 
     const validateCheckbox = document.querySelectorAll("input[type=checkbox]");
-    console.log(validateCheckbox);
+    if (
+      Array.from(validateCheckbox).every((element) => element.checked === false)
+    ) {
+      alert("Make sure to check at least one box");
+      setPasswordStrenght(null);
+    }
+    console.log(generatedPassword.length);
+  };
 
-    if (generatedPassword <= 5) {
+  useEffect(() => {
+    if (generatedPassword === "") {
+      setPasswordStrenght(null);
+    } else if (generatedPassword.length <= 5) {
       setPasswordStrenght(1);
-    } else if (generatedPassword <= 8 && generatedPassword >= 6) {
+    } else if (generatedPassword.length <= 8 && generatedPassword.length >= 6) {
       setPasswordStrenght(2);
-    } else if (generatedPassword <= 14 && generatedPassword >= 9) {
+    } else if (
+      generatedPassword.length <= 14 &&
+      generatedPassword.length >= 9
+    ) {
       setPasswordStrenght(3);
     } else {
       setPasswordStrenght(4);
     }
-  };
-
-  useEffect(() => {}, [passwordStrenght, charLenght]);
+  }, [generatedPassword]);
 
   return (
     <main>
