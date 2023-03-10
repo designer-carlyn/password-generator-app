@@ -23,20 +23,30 @@
       align-items: center;
       margin-bottom: 20px;
 
-      button {
-        background: transparent;
-        cursor: pointer;
-        outline: none;
-        border: none;
+      .copy-wrapper {
         margin-left: auto;
-
-        img {
-          display: flex;
+        display: flex;
+        align-items: center;
+        
+        small {
+          margin-right: 10px;
+          color: #898697;
         }
 
-        &:hover {
+        button {
+          background: transparent;
+          cursor: pointer;
+          outline: none;
+          border: none;
+  
           img {
-            filter: contrast(3.5);
+            display: flex;
+          }
+  
+          &:hover {
+            img {
+              filter: contrast(3.5);
+            }
           }
         }
       }

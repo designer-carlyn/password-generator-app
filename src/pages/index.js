@@ -121,6 +121,17 @@ const IndexPage = () => {
     }
   };
 
+  const onClickClipboard = () => {
+    navigator.clipboard.writeText(generatedPassword);
+
+    const copiedIndicator = document.querySelector(".copied-indicator");
+    copiedIndicator.textContent = "COPIED";
+
+    setTimeout(() => {
+      copiedIndicator.textContent = "";
+    }, 1000);
+  };
+
   useEffect(() => {
     if (generatedPassword === "") {
       setPasswordStrength(null);
@@ -146,12 +157,15 @@ const IndexPage = () => {
       <div className="password-generator__container">
         <div className="password-generator__container-header">
           <h2>{generatedPassword === "" ? "P4$5W0rD!" : generatedPassword}</h2>
-          <button type="button">
-            <img
-              src="https://ik.imagekit.io/csdesigner/password_generator/icon_copy_u96WQ4TwF.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1678426067754"
-              alt="copy-password"
-            ></img>
-          </button>
+          <div className="copy-wrapper">
+            <small className="copied-indicator"></small>
+            <button type="button" onClick={onClickClipboard}>
+              <img
+                src="https://ik.imagekit.io/csdesigner/password_generator/icon_copy_u96WQ4TwF.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1678426067754"
+                alt="copy-password"
+              ></img>
+            </button>
+          </div>
         </div>
         <div className="password-generator__container-settings">
           <div className="character-length">
