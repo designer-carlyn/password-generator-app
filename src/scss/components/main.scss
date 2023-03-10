@@ -1,0 +1,252 @@
+.password-generator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: calc(100vh - 100px);
+  padding: 50px 20px;
+
+  h1 {
+    color: #898697;
+    font-size: 22px;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: 450px;
+    margin-top: 30px;
+
+    &-header {
+      background: #24232b;
+      padding: 15px 25px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+
+      button {
+        background: transparent;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        margin-left: auto;
+
+        img {
+          display: flex;
+        }
+
+        &:hover {
+          img {
+            filter: contrast(3.5);
+          }
+        }
+      }
+    }
+
+    &-settings {
+      background: #24232b;
+      padding: 20px 25px;
+
+      .character-length {
+        .length-label {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+          
+          small {
+            font-size: 16px;
+          }
+  
+          strong {
+            margin-left: auto;
+            font-size: 25px;
+            color: #a4ffaf;
+          }
+        }
+
+        .length-input {
+          .input-range {
+            -webkit-appearance: none;  /* Override default CSS styles */
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #100f15;
+            background-image: linear-gradient(hsl(127, 100%, 82%), hsl(127, 100%, 82%));
+            background-size: 50% 100%;
+            background-repeat: no-repeat;
+            outline: none;
+          }
+
+          /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+          .input-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50px;
+            background: #e7e6eb;
+            border: 3px solid #e7e6eb;
+            cursor: pointer;
+
+            &:hover {
+              background: #100f15;
+              border: 3px solid #a4ffaf;
+            }
+          }
+
+          .input-range::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50px;
+            background: #e7e6eb;
+            border: 3px solid #e7e6eb;
+            cursor: pointer;
+
+            &:hover {
+              background: #100f15;
+              border: 3px solid #a4ffaf;
+            }
+          }
+        }
+      }
+
+      .password-menu {
+        margin-top: 40px;
+
+        .checkbox-container {
+          display: block;
+          position: relative;
+          cursor: pointer;
+          user-select: none;
+          padding-left: 35px;
+          line-height: 1;
+          font-size: 16px;
+          margin-bottom: 23px;
+
+          input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+
+            &:checked ~ .checkmark {
+              background-color: #a4ffaf;
+            }
+
+            &:checked ~ .checkmark:after {
+              display: block;
+            }
+          }
+
+          .checkmark {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #eee;
+
+            &:after {
+              left: 7px;
+              top: 2px;
+              width: 4px;
+              height: 10px;
+              border: solid #18171f;
+              border-width: 0 4px 4px 0;
+              transform: rotate(45deg);
+              content: "";
+              position: absolute;
+              display: none;
+            }
+          }
+
+          &:hover {
+            .checkmark {
+              background-color: #ccc;
+            }
+          }
+        }
+      }
+
+      .password-strength {
+        background: #18171f;
+        padding: 18px 23px;
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+
+        strong {
+          color: #898697;
+        }
+
+        .strength-validation {
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+
+          .strength-status {
+            font-size: 20px;
+            margin-right: 10px;
+          }
+
+          .strength-bar {
+            display: flex;
+            grid-gap: 8px;
+            .bar-indicator {
+              border: 2px solid #ffffff;
+              background: transparent;
+              width: 8px;
+              height: 23px;
+
+              &.too-weak {
+                border: 2px solid #F74B4B;
+                background: #F74B4B;
+              }
+
+              &.weak {
+                border: 2px solid #FB7A56;
+                background: #FB7A56;
+              }
+
+              &.medium {
+                border: 2px solid #F8CB63;
+                background: #F8CB63;
+              }
+
+              &.strong {
+                border: 2px solid #A3FFAE;
+                background: #A3FFAE;
+              }
+            }
+          }
+        }
+      }
+
+      .generate-button {
+        margin-top: 30px;
+        
+        
+        button {
+          width: 100%;
+          padding: 20px 10px;
+          font-size: 16px;
+          font-family: "JetBrainsMono";
+          border: 2px solid #a4ffaf;
+          background: #a4ffaf;
+          color: #18171f;
+          cursor: pointer;
+
+          &:hover {
+            background: transparent;
+            color: #a4ffaf;
+
+            path {
+              fill: #a4ffaf;
+            }
+          }
+        }
+      }
+    }
+  }
+}
