@@ -1,4 +1,4 @@
-# Frontend Mentor - Notifications page solution
+# Frontend Mentor - Password Generator APP
 
 ## Table of contents
 
