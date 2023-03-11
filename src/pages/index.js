@@ -29,67 +29,73 @@ const IndexPage = () => {
     setCharLenght(value);
   };
 
-  const onChangeUpperCase = (event) => {
+  const onChangeCheckox = (event) => {
     let name = event.target.name;
-    setUpperCase(!upperCase);
-    if (!upperCase) {
-      setPasswordInclude({
-        ...passwordInclude,
-        [name]: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-      });
-    } else {
-      setPasswordInclude({
-        ...passwordInclude,
-        [name]: "",
-      });
-    }
-  };
 
-  const onChangeLowerCase = (event) => {
-    let name = event.target.name;
-    setLowerCase(!lowerCase);
-    if (!lowerCase) {
-      setPasswordInclude({
-        ...passwordInclude,
-        [name]: "abcdefghijklmnopqrstuvwxyz",
-      });
-    } else {
-      setPasswordInclude({
-        ...passwordInclude,
-        [name]: "",
-      });
-    }
-  };
-
-  const onChangeNumbers = (event) => {
-    let name = event.target.name;
-    setNumbers(!numbers);
-    if (!numbers) {
-      setPasswordInclude({
-        ...passwordInclude,
-        [name]: "0123456789",
-      });
-    } else {
-      setPasswordInclude({
-        ...passwordInclude,
-        [name]: "",
-      });
-    }
-  };
-
-  const onChangeSymbols = (event) => {
-    let name = event.target.name;
-    setSymbols(!symbols);
-    if (!symbols) {
-      setPasswordInclude({
-        ...passwordInclude,
-        [name]: "~`!@#$%^&*()_-+={[}]|:;'<,>.?/",
-      });
-    } else {
-      setPasswordInclude({
-        ...passwordInclude,
-        [name]: "",
-      });
+    switch (name) {
+      case "upperCase":
+        setUpperCase(!upperCase);
+        if (!upperCase) {
+          setPasswordInclude({
+            ...passwordInclude,
+            [name]: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+          });
+        } else {
+          setPasswordInclude({
+            ...passwordInclude,
+            [name]: "",
+          });
+        }
+        break;
+      case "lowerCase":
+        setLowerCase(!lowerCase);
+        if (!lowerCase) {
+          setPasswordInclude({
+            ...passwordInclude,
+            [name]: "abcdefghijklmnopqrstuvwxyz",
+          });
+        } else {
+          setPasswordInclude({
+            ...passwordInclude,
+            [name]: "",
+          });
+        }
+        break;
+      case "numbers":
+        setNumbers(!numbers);
+        if (!numbers) {
+          setPasswordInclude({
+            ...passwordInclude,
+            [name]: "0123456789",
+          });
+        } else {
+          setPasswordInclude({
+            ...passwordInclude,
+            [name]: "",
+          });
+        }
+        break;
+      case "symbols":
+        setSymbols(!symbols);
+        if (!symbols) {
+          setPasswordInclude({
+            ...passwordInclude,
+            [name]: "~`!@#$%^&*()_-+={[}]|:;'<,>.?/",
+          });
+        } else {
+          setPasswordInclude({
+            ...passwordInclude,
+            [name]: "",
+          });
+        }
+        break;
+      default:
+        setPasswordInclude({
+          upperCase: "",
+          lowerCase: "",
+          numbers: "",
+          symbols: "",
+        });
     }
   };
 
@@ -116,8 +122,10 @@ const IndexPage = () => {
     if (
       Array.from(validateCheckbox).every((element) => element.checked === false)
     ) {
-      alert("Make sure to check at least one box");
+      setCharLenght(1);
+      setRangeLength(0);
       setPasswordStrength(null);
+      alert("Make sure to check at least one box");
     }
   };
 
@@ -147,8 +155,6 @@ const IndexPage = () => {
     } else {
       setPasswordStrength(4);
     }
-
-    console.log(passwordStrength);
   }, [generatedPassword, passwordStrength]);
 
   return (
@@ -192,7 +198,7 @@ const IndexPage = () => {
               <input
                 type="checkbox"
                 name="upperCase"
-                onChange={onChangeUpperCase}
+                onChange={onChangeCheckox}
               />
               <span className="checkmark"></span>
             </label>
@@ -201,7 +207,7 @@ const IndexPage = () => {
               <input
                 type="checkbox"
                 name="lowerCase"
-                onChange={onChangeLowerCase}
+                onChange={onChangeCheckox}
               />
               <span className="checkmark"></span>
             </label>
@@ -210,7 +216,7 @@ const IndexPage = () => {
               <input
                 type="checkbox"
                 name="numbers"
-                onChange={onChangeNumbers}
+                onChange={onChangeCheckox}
               />
               <span className="checkmark"></span>
             </label>
@@ -219,7 +225,7 @@ const IndexPage = () => {
               <input
                 type="checkbox"
                 name="symbols"
-                onChange={onChangeSymbols}
+                onChange={onChangeCheckox}
               />
               <span className="checkmark"></span>
             </label>
