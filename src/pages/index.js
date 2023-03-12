@@ -238,7 +238,7 @@ const IndexPage = () => {
                   case 1:
                     return <div className="strength-status">TOO WEAK!</div>;
                   case 2:
-                    return <div className="strength-status">TOO WEAK!</div>;
+                    return <div className="strength-status">WEAK</div>;
                   case 3:
                     return <div className="strength-status">MEDIUM</div>;
                   case 4:
