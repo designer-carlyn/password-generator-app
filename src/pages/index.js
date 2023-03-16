@@ -322,4 +322,18 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-export const Head = () => <title>Password Generator App</title>;
+export const Head = () => (
+  <>
+    <title>Password Generator App</title>
+    <meta property="og:title" content="Password Generator App" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="Generate your password now for your own security."
+    />
+    <meta
+      property="og:image"
+      content="https://ik.imagekit.io/csdesigner/my_portfolio/recent_works/password-generator_NHud31vNn.webp?updatedAt=1678863890907"
+    />
+  </>
+);
